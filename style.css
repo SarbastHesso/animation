@@ -4,74 +4,47 @@
     padding: 0;
 }
 
-.box-1 {
-    background-color: red;
+body {
+    height: 100vh;
 }
-.box-2 {
-    background-color: blue;
-}
-.box-3 {
-    background-color: green;
-}
-
-.transform {
-    height: 500px;
-    width: 100%;
-    display: flex;
-    justify-content: space-evenly;
-    margin: 100px 0;
-    padding: 50px;
-    border: 3px solid #000000;
-}
-
-.transform div{
-    height: 200px;
-    width: 200px;
-    margin-top: 50px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-size: 1.5rem;
-}
-
-.transform .box-1 {
-    transition: 1s ease-in;
-}
-
-.transform .box-1:hover {
-    transform: translate(-200px, 200px);
-}
-
-.transform .box-2 {
-    transition: 2s linear;
-}
-
-.transform .box-2:hover {
-    transform: scale(2);
-}
-
-.transform .box-3 {
-    transition: 1.5s ease-out;
-}
-
-.transform .box-3:hover {
-    transform: rotate(360deg);
-}
-
-
-/* ---------------------------------------------------------------------------------------------------- */
 
 .sky {
-    height: 500px;
+    height: 40%;
     background-color: lightblue;
+    display: flex;
+    justify-content: space-evenly;
 }
+
+.cloud {
+    position: absolute;
+}
+
+.cloud:nth-child(1){
+    width: 300px;
+    top: 0;
+    left: 0;
+    animation: wind 70s linear infinite reverse;
+}
+.cloud:nth-child(2){
+    width: 150px;
+    top: 100px;
+    left: 400px;
+    opacity: .5;
+    animation: wind 100s linear infinite reverse;
+}
+
+@keyframes wind {
+    from {left: -20%;}
+    to {left: 100%;}
+}
+
 .grass {
-    height: 300px;
+    height: 30%;
     background-color: green;
 }
 
 .road {
-    height: 300px;
+    height: 30%;
     background-color: gray;
     border-top: 20px solid darkgray;
     border-bottom: 10px solid darkgray;
@@ -90,10 +63,29 @@
     position: absolute;
     top: -50px;
     left: 0;
-    animation: drive 6s ease-in both infinite;
+    animation: drive 6s linear infinite, jump 1s 2s ease;
+}
+.luigi {
+    position: absolute;
+    top: 100px;
+    left: 0;
+    animation: drive 8s linear infinite, head 4s 3s ease;
+    z-index: 1;
 }
 
 @keyframes drive {
     0% {left: -10%}
     100% {left: 120%}
+}
+
+@keyframes jump {
+    0% {top: -50px;}
+    50% {top: -150px;}
+    100% {top: -50px;}
+}
+
+@keyframes head {
+    0% {transform: rotate(0deg);}
+    50% {transform: rotate(-20deg);}
+    100% {transform: rotate(0deg);}
 }
